@@ -2,9 +2,15 @@
 
 source /etc/profile.d/rvm.sh
 
-git clone https://github.com/Netflix/scumblr.git /scumblr 
+{ # your 'try' block
+    git clone https://github.com/Netflix/scumblr.git /scumblr  &&
+    mv output
+} || { # your 'catch' block
+    mv log
+}
 
-cd /scumblr
+ rm tmp cd /scumblr
+
 
 if [ "$SCUMBLR_CREATE_DB" == "true" ]
 then
